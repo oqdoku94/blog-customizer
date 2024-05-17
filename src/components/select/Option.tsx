@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import type { MouseEventHandler } from 'react';
+import type { MouseEventHandler, MouseEvent } from 'react';
 import clsx from 'clsx';
 import { OptionType } from 'src/constants/articleProps';
 import { Text } from 'components/text';
@@ -22,7 +22,8 @@ export const Option = (props: OptionProps) => {
 
 	const handleClick =
 		(clickedValue: OptionType['value']): MouseEventHandler<HTMLLIElement> =>
-		() => {
+		(event: MouseEvent<HTMLLIElement>) => {
+			event.stopPropagation();
 			onClick(clickedValue);
 		};
 

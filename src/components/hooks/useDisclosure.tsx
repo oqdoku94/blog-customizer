@@ -7,8 +7,7 @@ export const useDisclosure = (
 ): {
 	isOpen: boolean;
 	toggle: () => void;
-	open: () => void;
-	close: () => void;
+	setOpen: (value: boolean) => void;
 } => {
 	const [open, setOpen] = useState(initialState);
 
@@ -23,7 +22,6 @@ export const useDisclosure = (
 	return {
 		isOpen: open,
 		toggle: () => setOpen(!open),
-		open: () => setOpen(true),
-		close: () => setOpen(false),
+		setOpen: (value: boolean) => setOpen(value),
 	};
 };
